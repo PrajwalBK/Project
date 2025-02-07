@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in Sydney</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Upcoming Events in Sydney</h1>
+        <div class="row">
+            {% for event in events %}
+            <div class="col-md-4">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event[0] }}</h5>
+                        <p class="card-text">{{ event[1] }}</p>
+                        <form action="/get-ticket" method="POST">
+                            <input type="hidden" name="event_link" value="{{ event[2] }}">
+                            <input type="email" name="email" placeholder="Enter your email" required>
+                            <button type="submit" class="btn btn-primary">GET TICKETS</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
